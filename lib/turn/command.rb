@@ -27,7 +27,8 @@ module Turn
   #     -O, --outline                    turn's original case/test outline mode [default]
   #     -P, --progress                   indicates progress with progress bar
   #     -D, --dotted                     test-unit's traditonal dot-progress mode
-  #     -R, -T, --pretty                 new pretty output mode
+  #     -R, --pretty                     new pretty output mode
+  #     -T, --timing                     new timing output mode
   #     -C, --cue                        cue for action on each failure/error
   #     -M, --marshal                    dump output as YAML (normal run mode only)
   #  
@@ -205,8 +206,12 @@ module Turn
           @outmode = :dotted
         end
 
-        opts.on('--pretty', '-R', '-T', "new pretty output mode") do
+        opts.on('--pretty', '-R', "new pretty output mode") do
           @outmode = :pretty
+        end
+
+        opts.on('--timing', '-T', "new timing output mode") do
+          @outmode = :timing
         end
 
         opts.on('--cue', '-C', "cue for action on each failure/error") do

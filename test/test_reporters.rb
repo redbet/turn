@@ -40,5 +40,12 @@ class TestReporters < Test::Unit::TestCase
     assert result.index('0 failures'), "ACTUAL RESULT:\n#{result}"
   end
 
+  def test_timing
+    file = setup_testunit
+    result = turn '--timing', file
+    assert result.index('Longest running suites'), "ACTUAL RESULT:\n#{result}"
+    assert result.index('Longest running tests'), "ACTUAL RESULT:\n#{result}"
+  end
+
 end
 

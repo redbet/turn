@@ -200,6 +200,9 @@ module Turn
         when :pretty
           require 'turn/reporters/pretty_reporter'
           Turn::PrettyReporter.new($stdout, opts)
+        when :timing
+          require 'turn/reporters/timing_reporter'
+          Turn::TimingReporter.new($stdout, opts)
         else
           require 'turn/reporters/pretty_reporter'
           Turn::PrettyReporter.new($stdout, opts)
