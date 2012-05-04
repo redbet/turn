@@ -5,6 +5,9 @@
 
 ## DESCRIPTION:
 
+This is a fork of TURN which adds the <b>timing</b> output format, it
+displays the 10 longest running test cases and suites.
+
 TURN is a new way to view test results. With longer running tests, it
 can be very frustrating to see a failure (....F...) and then have to wait till
 all the tests finish before you can see what the exact failure was. TURN
@@ -103,7 +106,7 @@ Options are following:
     matchcase       Regexp pattern that all test cases must match to be eligible to run. Default: nil (all)
     loadpath        Add these folders to the $LOAD_PATH. Default: ['lib']
     requires        Libs to require when running tests. Default: []
-    format          Reporter type (:pretty, :dot, :cue, :marshal, :outline, :progress). Default: :pretty
+    format          Reporter type (:timing, :pretty, :dot, :cue, :marshal, :outline, :progress). Default: :pretty
     live            Test against live install (i.e. Don't use loadpath option). Default: false
     verbose         Verbose output? Default: false
     trace           Number of backtrace lines to display. Default: set from ENV or nil (all)
