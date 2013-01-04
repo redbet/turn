@@ -47,5 +47,11 @@ class TestReporters < Test::Unit::TestCase
     assert result.index('Longest running tests'), "ACTUAL RESULT:\n#{result}"
   end
 
+  def test_timing_withhold_empty
+    file = setup_testunit_empty_suite
+    result = turn '--timing', file
+    assert_equal nil, result.index(/EmptyTest/)
+  end
+
 end
 

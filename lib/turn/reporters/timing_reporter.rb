@@ -26,12 +26,12 @@ module Turn
 
     def finish_case(kase)
       super
-      @case_times << [
-        kase.name,
-        (Time.now - @case_time),
-        kase.count_tests,
-        (Time.now - @case_time) / kase.count_tests.to_f
-      ]
+
+      tests = kase.count_tests
+      return if tests < 1
+
+      time = Time.now - @case_time
+      @case_times << [kase.name, time, tests, time / tests.to_f]
     end
 
     def start_test(test)

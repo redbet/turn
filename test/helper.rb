@@ -68,6 +68,20 @@ end
 end
 
 #
+def setup_testunit_empty_suite(required=false, name=nil)
+  text = ''
+  text << "require '#{required}'\n" if required
+  text << <<-HERE
+class EmptyTest < Test::Unit::TestCase
+end
+class TestTest < Test::Unit::TestCase
+#{long_running_test_body}
+end
+  HERE
+  save_test(text, name)
+end
+
+#
 def save_test(text, name=nil)
   file = File.join('tmp', name || 'test.rb')
   FileUtils.mkdir_p('tmp') unless File.directory?('tmp')
@@ -79,6 +93,16 @@ end
 def standard_test_body
 <<-HERE
   def test_pass
+    assert_equal(1,1)
+  end
+HERE
+end
+
+#
+def long_running_test_body
+<<-HERE
+  def test_pass
+    sleep 0.2
     assert_equal(1,1)
   end
 HERE
